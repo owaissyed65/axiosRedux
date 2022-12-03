@@ -1,7 +1,7 @@
 const initialState = {
     products: []
 }
-const products = (state = initialState, action) => {
+export const products = (state = initialState, action) => {
 
     if (action.type === "SET_PRODUCTS") {
         return {
@@ -15,4 +15,15 @@ const products = (state = initialState, action) => {
     }
 
 }
-export default products
+export const selectedProduct = (state = initialState, action) => {
+    if (action.type === "SELECTED_PRODUCTS") {
+        return {
+            ...state,
+            products: [...action.payload]
+        }
+
+    }
+    else return {
+        ...state,
+    }
+}

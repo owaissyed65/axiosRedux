@@ -1,14 +1,18 @@
-const initialState = [
-    {
-        id: 1,
-        title: 'OWais'
-    }
-]
+const initialState = {
+    products: []
+}
 const products = (state = initialState, action) => {
-    if (action.type.Set_Products) {
-        return state
+
+    if (action.type === "SET_PRODUCTS") {
+        return {
+            ...state,
+            products: [...action.payload]
+        }
+
     }
-    else return state
-    
+    else return {
+        ...state,
+    }
+
 }
 export default products

@@ -1,6 +1,11 @@
 const initialState = {
     products: []
 }
+const initialStateObj = {
+    selProduct: {
+
+    }
+}
 export const products = (state = initialState, action) => {
 
     if (action.type === "SET_PRODUCTS") {
@@ -15,11 +20,11 @@ export const products = (state = initialState, action) => {
     }
 
 }
-export const selectedProduct = (state = initialState, action) => {
+export const selectedProduct = (state = initialStateObj, action) => {
     if (action.type === "SELECTED_PRODUCTS") {
         return {
             ...state,
-            products: [...action.payload]
+            selProduct: { ...action.payload }
         }
 
     }

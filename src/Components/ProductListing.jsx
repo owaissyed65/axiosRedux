@@ -17,10 +17,10 @@ const ProductListing = () => {
     }
     useEffect(() => {
         fetchData();
+        document.title = "FakeStore - Your Choice Is our Priority"
         // eslint-disable-next-line
     }, []);
     const products = useSelector(state => state.products.products)
-    console.log(products);
     return (
         (products.length === 0 ? <div className='loading'>Loading Please Wait</div> :
             <div className='box'>
@@ -32,7 +32,7 @@ const ProductListing = () => {
                                 <img src={obj.image} alt="" />
                             </span>
                             <div className='title'>Title : {obj.title}</div>
-                            <div className='price'>Price : {obj.price}</div>
+                            <div className='price'>Price : ${obj.price}</div>
                             <div className='rate'>Rating : {obj.rating.rate}</div>
                             <Link to={`/product/${obj.id}`} >
                                 <button className='button'>Details</button>

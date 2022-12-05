@@ -13,7 +13,7 @@ const ProductDetails = () => {
     const fetchSelectedData = async () => {
         const { productid } = id;
         const data = await axios.get(`https://fakestoreapi.com/products/${productid}`).catch(err => console.log(err))
-        return data
+        return data;
     }
     const getSelectedData = async () => {
         const data = await fetchSelectedData();
@@ -25,7 +25,7 @@ const ProductDetails = () => {
     useEffect(() => {
         fetchSelectedData();
         getSelectedData();
-        if (selProduct.title === undefined) {
+        if (typeof selProduct.title === 'undefined') {
             document.title = 'FakeStore'
         }
         else document.title = selProduct.title
@@ -42,7 +42,9 @@ const ProductDetails = () => {
             <div className="cont-child-img"><img src={selProduct.image} alt="Error Loading" /></div>
             <div className="cont-child-price"><span>Price: &#36;{selProduct.price} only</span></div>
             <div className="cont-child-description">Description: {selProduct.description}</div>
-            <div className="cont-child-rating"><div className="rate">Rate: {selProduct.rating.rate}</div><div className="count">TotalProduct: {selProduct.rating.count}</div></div>
+            <div className="cont-child-rating"><div className="rate">Rate: {selProduct.rating.rate}</div>
+                <div className="count">TotalProduct: {selProduct.rating.count}</div>
+            </div>
         </div>)
     )
 }

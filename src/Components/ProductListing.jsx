@@ -4,7 +4,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setProduct } from '../Redux/action-creator/action';
-import { Link } from 'react-router-dom';
+import ProductComponent from './ProductComponent';
 
 const ProductListing = () => {
     // const [product, setProducts] = useState([]);
@@ -24,20 +24,9 @@ const ProductListing = () => {
     return (
         (products.length === 0 ? <div className='loading'>Loading Please Wait</div> :
             <div className='box'>
-
                 {products.map((obj) => {
                     return (
-                        <div className="card-m" key={obj.id}>
-                            <span className="img">
-                                <img src={obj.image} alt="" />
-                            </span>
-                            <div className='title'>Title : {obj.title}</div>
-                            <div className='price'>Price : ${obj.price}</div>
-                            <div className='rate'>Rating : {obj.rating.rate}</div>
-                            <Link to={`/product/${obj.id}`} >
-                                <button className='button'>Details</button>
-                            </Link>
-                        </div>
+                        <div key={obj.id}> <ProductComponent id={obj.id} title={obj.title} image={obj.image} price={obj.price} rating={obj.rating} /></div>
                     )
                 })}
             </div>
